@@ -1,0 +1,5 @@
+services:
+  persona-crud:
+    build: .
+    ports:
+      - "8080:8080"

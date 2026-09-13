@@ -64,5 +64,15 @@ class PersonControllerTest {
                         .content(mapper.writeValueAsString(p)))
                 .andExpect(status().isCreated());
     }
+
+    @Test
+    void create_shouldReturn400WhenEmailInvalid() throws Exception {
+        Person p = new Person("New", "invalid-email");
+
+        mvc.perform(post("/api/persons")
+                        .contentType("application/json")
+                        .content(mapper.writeValueAsString(p)))
+                .andExpect(status().isBadRequest());
+    }
 }
 
