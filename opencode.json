@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "custom": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Custom LLM",
+      "options": {
+        "baseURL": "https://api.deepseek.com",
+        "apiKey": "{env:OPENAI_API_KEY}"
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "deepseek-v4-pro"
+        }
+      }
+    }
+  },
+  "model": "custom/deepseek-v4-pro",
+  "small_model": "custom/deepseek-v4-pro",
+  "system_prompt": "Ты — помощник по написанию кода...",
+  "rules": [
+    "Используй существующий стиль кода",
+    "Не удаляй существующую функциональность без необходимости"
+  ]
+}

@@ -17,6 +17,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(PersonController.class)
@@ -48,6 +49,14 @@ class PersonControllerTest {
         when(service.list()).thenReturn(Arrays.asList(new Person("A", "a@a")));
         mvc.perform(get("/api/persons"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void count_shouldReturn200AndJson() throws Exception {
+        when(service.count()).thenReturn(42L);
+        mvc.perform(get("/api/persons/count"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(42));
     }
 
     @Test

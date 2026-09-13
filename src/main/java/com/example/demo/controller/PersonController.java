@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/persons")
@@ -26,6 +27,11 @@ public class PersonController {
     @GetMapping
     public List<Person> list() {
         return service.list();
+    }
+
+    @GetMapping("/count")
+    public Map<String, Long> count() {
+        return Map.of("count", service.count());
     }
 
     @GetMapping("/{id}")

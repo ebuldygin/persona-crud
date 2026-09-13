@@ -40,6 +40,17 @@ mvn spring-boot:run
 Por defecto, el servicio estará disponible en:
 http://localhost:8080/api/persons
 
+**API Endpoints**
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | `/api/persons` | Crea una nueva persona |
+| GET | `/api/persons` | Lista todas las personas |
+| GET | `/api/persons/count` | Devuelve el número total de personas (`{ "count": <número> }`) |
+| GET | `/api/persons/{id}` | Obtiene una persona por ID |
+| PUT | `/api/persons/{id}` | Actualiza una persona |
+| DELETE | `/api/persons/{id}` | Elimina una persona |
+
 **Docker**
 
 Construir imagen (usando el JAR final persona-crud.jar):
