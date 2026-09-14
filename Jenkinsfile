@@ -14,11 +14,11 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.9.6-eclipse-temurin-21'
-                    args '-e HOME=/root -u 0'  // correr como root para permisos
+                    args '-e HOME=/root -u 0'  // run as root for permissions
                 }
             }
             steps {
-                echo "Compilando el proyecto con Java 21..."
+                echo "Building the project with Java 21..."
                 sh 'mvn clean package -DskipTests'
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Ejecutando pruebas..."
+                echo "Running tests..."
                 sh 'mvn test jacoco:report'
             }
             post {
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Analizando código con SonarQube..."
+                echo "Analyzing code with SonarQube..."
                 withSonarQubeEnv('SonarQube-Server') {
                     sh """
                         mvn sonar:sonar \
@@ -64,7 +64,7 @@ pipeline {
         stage('Build Docker Image') {
             agent any
             steps {
-                echo "Construyendo imagen Docker..."
+                echo "Building Docker image..."
                 sh "docker build -t $IMAGE_NAME:${env.BUILD_NUMBER} ."
             }
         }
@@ -72,7 +72,7 @@ pipeline {
         stage('DockerHub') {
             agent any
             steps {
-                echo "Enviando imagen a DockerHub..."
+                echo "Pushing image to DockerHub..."
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker tag $IMAGE_NAME:${env.BUILD_NUMBER} $USER/$IMAGE_NAME:${env.BUILD_NUMBER}"
@@ -84,10 +84,10 @@ pipeline {
 
     post {
         success {
-            echo "Pipeline completado exitosamente. Imagen publicada en DockerHub."
+            echo "Pipeline completed successfully. Image published to DockerHub."
         }
         failure {
-            echo "El pipeline falló. Revisa los logs en Jenkins."
+            echo "The pipeline failed. Check the logs in Jenkins."
         }
     }
 }

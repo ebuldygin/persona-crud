@@ -2,129 +2,129 @@
 
 **Demo CRUD Microservice - Java 21 + Spring Boot (felcas)**
 
-Este proyecto es un microservicio CRUD de ejemplo desarrollado con Java 21 y Spring Boot 3.x.
-Su propósito es demostrar una arquitectura básica de microservicio con:
+This project is a sample CRUD microservice developed with Java 21 and Spring Boot 3.x.
+Its purpose is to demonstrate a basic microservice architecture with:
 
-**Endpoints RESTful**
+**RESTful Endpoints**
 
-Persistencia con Spring Data JPA y H2 (en memoria)
+Persistence with Spring Data JPA and H2 (in-memory)
 
-Tests unitarios (JUnit 5 + Mockito + MockMvc)
+Unit tests (JUnit 5 + Mockito + MockMvc)
 
-Reporte de cobertura con JaCoCo
+Coverage report with JaCoCo
 
-CI/CD con Jenkins, SonarQube y Docker Hub
+CI/CD with Jenkins, SonarQube, and Docker Hub
 
-**Datos del proyecto**
+**Project details**
 
 ArtifactId (pom.xml): persona-crud
 
-Jar final empaquetado: persona-crud.jar
+Final packaged jar: persona-crud.jar
 
-Imagen Docker (namespace): fmcastre/persona-crud
+Docker image (namespace): fmcastre/persona-crud
 
-**Ejecución local**
+**Local execution**
 
-Clona el proyecto y compílalo:
+Clone the project and build it:
 
 mvn clean package
 
-**Ejecuta los tests:**
+**Run the tests:**
 
 mvn test
 
-**Levanta el servicio:**
+**Start the service:**
 
 mvn spring-boot:run
 
-Por defecto, el servicio estará disponible en:
+By default, the service will be available at:
 http://localhost:8080/api/persons
 
 **Docker**
 
-Construir imagen (usando el JAR final persona-crud.jar):
+Build the image (using the final JAR persona-crud.jar):
 
 mvn clean package
 docker build -t fmcastre/persona-crud:latest .
 
-**Ejecutar contenedor:**
+**Run the container:**
 
 docker run -p 8080:8080 fmcastre/persona-crud:latest
 
-# **Tecnologías y Herramientas**
+# **Technologies and Tools**
 
-Java + Spring Boot: Backend REST para operaciones CRUD
+Java + Spring Boot: REST backend for CRUD operations
 
-Docker: Contenerización del microservicio
+Docker: Containerization of the microservice
 
-Jenkins: Automatización del pipeline CI/CD
+Jenkins: CI/CD pipeline automation
 
-SonarQube: Análisis estático de calidad de código
+SonarQube: Static code quality analysis
 
-Docker Hub: Registro de imágenes Docker
+Docker Hub: Docker image registry
 
-GitHub: Repositorio del código fuente
+GitHub: Source code repository
 
-**Archivos Clave**
+**Key Files**
 
-Dockerfile: Define cómo construir la imagen Docker del microservicio
+Dockerfile: Defines how to build the Docker image of the microservice
 
-Jenkinsfile: Contiene el pipeline declarativo para Jenkins (build, test, análisis, despliegue)
+Jenkinsfile: Contains the declarative pipeline for Jenkins (build, test, analysis, deployment)
 
-sonar-project.properties: Configuración para el análisis de código en SonarQube
+sonar-project.properties: Configuration for code analysis in SonarQube
 
-**Flujo CI/CD Automatizado**
+**Automated CI/CD Flow**
 
-El proyecto sigue un flujo CI/CD completamente automatizado usando Jenkins:
+The project follows a fully automated CI/CD flow using Jenkins:
 
-Checkout del código desde GitHub:
+Checkout of the code from GitHub:
 https://github.com/castrejonfelipe/persona-crud.git
 
-**Build del proyecto usando Maven**
+**Build the project using Maven**
 
-Ejecución de pruebas unitarias para asegurar la funcionalidad básica
+Execution of unit tests to ensure basic functionality
 
-Análisis de código con SonarQube mediante el archivo sonar-project.properties
+Code analysis with SonarQube via the sonar-project.properties file
 
-Construcción de la imagen Docker con el Dockerfile
+Building the Docker image with the Dockerfile
 
-Publicación automática en Docker Hub, incluyendo tagging con la versión o commit hash
+Automatic publication to Docker Hub, including tagging with the version or commit hash
 
-**Despliegue con Docker**
+**Deployment with Docker**
 
-Una vez publicada la imagen, puedes ejecutar el contenedor localmente con:
+Once the image is published, you can run the container locally with:
 
-docker pull <tu_usuario_dockerhub>/persona-crud:latest
-docker run -p 8080:8080 <tu_usuario_dockerhub>/persona-crud:latest
+docker pull <your_dockerhub_user>/persona-crud:latest
+docker run -p 8080:8080 <your_dockerhub_user>/persona-crud:latest
 
-**Estructura del proyecto**
+**Project structure**
 
 <img width="320" height="223" alt="image" src="https://github.com/user-attachments/assets/615c3b45-8e30-42b8-9ea0-733545c3ed9e" />
 
 
-## **Evidencia en Jenkins**
+## **Jenkins Evidence**
 
-Este proyecto cuenta con integración continua y control de calidad automatizado para asegurar la estabilidad y calidad del código.
+This project has continuous integration and automated quality control to ensure the stability and quality of the code.
 
 **Jenkins**
-Se utiliza Jenkins para la construcción y pruebas automáticas del proyecto.
-El estado actual del build se muestra a continuación.
+Jenkins is used for the automatic build and testing of the project.
+The current build status is shown below.
 
 <img width="1309" height="636" alt="image" src="https://github.com/user-attachments/assets/5a9b3875-6a9c-4645-bcda-47169aaf2252" />
 
 
 **SonarQube**
-La calidad del código es analizada mediante SonarQube, que verifica vulnerabilidades, bugs y la cobertura de pruebas.
+Code quality is analyzed with SonarQube, which checks for vulnerabilities, bugs, and test coverage.
 
   <img width="1135" height="440" alt="image" src="https://github.com/user-attachments/assets/1bcfd885-0f53-4830-874a-676b795e4e54" />
 
 
 **Docker Hub**
-La imagen Docker del proyecto está publicada en Docker Hub, facilitando su despliegue y distribución.
+The project's Docker image is published on Docker Hub, making it easy to deploy and distribute.
 
  <img width="1150" height="605" alt="image" src="https://github.com/user-attachments/assets/3e6d8be0-04e6-465c-865d-997085a04e59" />
 
-**Proyecto**  persona-crud
+**Project**  persona-crud
 
  <img width="645" height="507" alt="image" src="https://github.com/user-attachments/assets/02a4d9b8-3bd9-47c1-93f9-48e35a9a335a" />
 

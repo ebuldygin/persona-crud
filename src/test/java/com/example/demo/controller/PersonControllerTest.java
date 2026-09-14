@@ -32,8 +32,8 @@ class PersonControllerTest {
     ObjectMapper mapper;
 
     /**
-     * ✅ Configuración de prueba para inyectar un mock como bean.
-     * Esto reemplaza el uso de @MockBean (deprecated).
+     * ✅ Test configuration to inject a mock as a bean.
+     * This replaces the use of @MockBean (deprecated).
      */
     @TestConfiguration
     static class MockConfig {
