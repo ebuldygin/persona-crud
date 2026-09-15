@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Person;
 import com.example.demo.service.PersonService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<Person> create(@RequestBody Person p) {
+    public ResponseEntity<Person> create(@Valid @RequestBody Person p) {
         Person created = service.create(p);
         return ResponseEntity.created(URI.create("/api/persons/" + created.getId())).body(created);
     }
