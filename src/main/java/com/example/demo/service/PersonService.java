@@ -24,6 +24,10 @@ public class PersonService {
         return repo.findAll();
     }
 
+    public long count() {
+        return repo.count();
+    }
+
     public Optional<Person> get(Long id) {
         return repo.findById(id);
     }

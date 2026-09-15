@@ -41,6 +41,14 @@ class PersonServiceTest {
     }
 
     @Test
+    void count_shouldReturnCount() {
+        when(repo.count()).thenReturn(5L);
+        long count = service.count();
+        assertEquals(5L, count);
+        verify(repo).count();
+    }
+
+    @Test
     void get_shouldReturnOptional() {
         Person p = new Person("X", "x@x");
         p.setId(5L);
